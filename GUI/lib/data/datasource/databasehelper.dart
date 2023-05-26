@@ -4,12 +4,15 @@ import 'dart:convert';
 
 class DatabaseHelper{
 
-  static final String serverUrl = "http://127.0.0.1:8000/api";
+  static final String serverUrl = "http://192.168.1.102:8000/api";
   static bool status=false ;
   static var token ;
+  static var name;
+  static var email;
+  static var password;
 
-  static loginData(String name , String password) async{
 
+  static loginData() async{
     String myUrl = "$serverUrl/login/";
     final myUrl_ = Uri.parse(myUrl);
     final response = await  http.post(myUrl_,
@@ -48,8 +51,7 @@ class DatabaseHelper{
 
   }
 
-  static registerData(String name ,String email , String password) async{
-    print('registerDataaaaaaaaaaaaaaaaaaaaaaaaa');
+  static registerData() async{
     String myUrl = "$serverUrl/addUser/";
     final myUrl_ = Uri.parse(myUrl);
     final response = await  http.post(myUrl_,
@@ -131,7 +133,6 @@ class DatabaseHelper{
 
 
   //
-
   // Future<List> getData() async{
   //
   //   final prefs = await SharedPreferences.getInstance();

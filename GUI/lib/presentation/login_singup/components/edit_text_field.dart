@@ -1,7 +1,10 @@
 import 'package:gui/core/utils/color_manager.dart';
 import 'package:flutter/material.dart';
 
+
+typedef TextFieldChangedCallback = void Function(String value);
 class EditTextField extends StatelessWidget {
+   TextFieldChangedCallback? onChanged;
   late String label;
   late String hint;
   int? maxLength;
@@ -21,6 +24,7 @@ class EditTextField extends StatelessWidget {
     this.maxLength,
     this.obscure = false,
     this.errorText,
+    this.onChanged,
     Key? key})
       : super(key: key);
 
@@ -39,6 +43,7 @@ class EditTextField extends StatelessWidget {
                 .titleLarge),
           ),
           TextField(
+            onChanged: onChanged,
             keyboardType: type,
             // style: Theme.of(context).textTheme.bodyLarge,
             obscureText: obscure,
@@ -67,6 +72,7 @@ class EditTextField extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 suffixIcon: label == 'password'
+
                     ?
                 // Icon( Icons.remove_red_eye, color: my_colors.myRed,)
                 IconButton(
@@ -91,4 +97,5 @@ class EditTextField extends StatelessWidget {
       ),
     );
   }
+
 }

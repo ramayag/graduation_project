@@ -5,7 +5,7 @@ import 'package:gui/core/utils/enums.dart';
 import 'package:gui/core/utils/responsive.dart';
 import 'package:gui/data/datasource/databasehelper.dart';
 import 'package:gui/presentation/dashboard/MenuAppController.dart';
-import 'package:gui/presentation/login/screens/login_screen.dart';
+import 'package:gui/presentation/login_singup/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -80,44 +80,3 @@ class WelcomeForm extends StatelessWidget {
 
 
 
-// async {
-// DatabaseHelper databaseHelper = new DatabaseHelper();
-// await databaseHelper.registerData("nam", 'emai@gmail.com', 'password');
-// print('asssssss');
-// if (databaseHelper.status) {
-// print('tasssssss');
-// Navigator.of(context).push(MaterialPageRoute(
-// builder: (context) => MultiProvider(
-// providers: [
-// ChangeNotifierProvider(
-// create: (context) => MenuAppController(),
-// ),
-// ],
-// child: LoginScreen(loginType: LoginType.signIn),
-// // DashboardScreen(),
-// ),
-// )
-// );
-// }}
-
-
-
-// async {
-// DatabaseHelper databaseHelper = new DatabaseHelper();
-// await databaseHelper.registerData("nam", 'emai@gmail.com', 'password');
-// print('asssssss');
-// if (databaseHelper.status) {
-// print('tasssssss');
-// Navigator.of(context).push(MaterialPageRoute(
-// builder: (context) => MultiProvider(
-// providers: [
-// ChangeNotifierProvider(
-// create: (context) => MenuAppController(),
-// ),
-// ],
-// child: LoginScreen(loginType: LoginType.signIn),
-// // DashboardScreen(),
-// ),
-// )
-// );
-// }}

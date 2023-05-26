@@ -7,6 +7,7 @@ import 'package:gui/presentation/dashboard/components/header.dart';
 import 'package:gui/presentation/dashboard/components/side_menu.dart';
 import 'package:gui/presentation/dashboard/components/tip_row.dart';
 import 'package:flutter/material.dart';
+import 'package:gui/presentation/dashboard/dashboard_screen.dart';
 import 'package:provider/provider.dart';
 
 class DashboardDetailsScreen extends StatelessWidget {
@@ -74,7 +75,18 @@ class DashboardDetailsScreen extends StatelessWidget {
                                       color: Colors.white,
                                       fontWeight: FontWeight.w600,
                                     )),
-                            onPressed: () {}),
+                            onPressed: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => MultiProvider(
+                                  providers: [
+                                    ChangeNotifierProvider(
+                                      create: (context) => MenuAppController(),
+                                    ),
+                                  ],
+                                  child: DashboardScreen(),
+                                ),
+                              ),
+                            ),),
                         MaterialButton(
                             padding:
                                 EdgeInsets.all(Responsive.isMobile(context) ? 10 : 20),

@@ -9,6 +9,7 @@ import 'package:gui/presentation/dashboard/components/tip_row.dart';
 import 'package:gui/presentation/dashboard/dashboard_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'dart:math';
 
 class DashboardScreen extends StatelessWidget {
   DashboardScreen({Key? key}) : super(key: key);
@@ -19,13 +20,15 @@ class DashboardScreen extends StatelessWidget {
     "tip 3: This is a small test tip",
     "tip 4: use high quality microphone",
   ];
+  int a=new Random().nextInt(4);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: context.read<MenuAppController>().scaffoldKey,
       drawer: const SideMenu(),
-      body: SafeArea(
+      body: SingleChildScrollView(
+    child:SafeArea(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -51,9 +54,9 @@ class DashboardScreen extends StatelessWidget {
                   ),
                   ListView.builder(
                     shrinkWrap: true,
-                    itemCount: tips.length,
+                    itemCount: 1,//tips.length,
                     itemBuilder: (context, index) =>
-                        TipRow(title: tips[index], icon: AppAssets.tipIcon),
+                        TipRow(title: tips[a], icon: AppAssets.tipIcon),
                   ),
                   Constants.verticalSpaceLarge(),
                   Center(
@@ -90,7 +93,7 @@ class DashboardScreen extends StatelessWidget {
             ),
           ],
         ),
-      ),
+      ),)
     );
   }
 }

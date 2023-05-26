@@ -1,9 +1,10 @@
 import 'package:gui/core/utils/app_assets.dart';
 import 'package:gui/core/utils/enums.dart';
 import 'package:gui/core/utils/responsive.dart';
-import 'package:gui/presentation/login/components/login_form.dart';
+import 'package:gui/presentation/login_singup/components/login_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gui/presentation/login_singup/components/signup_form.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginType loginType;
@@ -14,7 +15,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Responsive(
-        mobileBody: LoginForm(loginType: loginType.getTypeName),
+        mobileBody: loginType==LoginType.signIn ?LoginForm(loginType: loginType.getTypeName) : SingupForm(loginType: loginType.getTypeName),
         desktopBody: Row(
           children: [
             SvgPicture.asset(AppAssets.talking,
