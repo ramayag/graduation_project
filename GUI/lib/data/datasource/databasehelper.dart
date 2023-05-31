@@ -6,7 +6,7 @@ class DatabaseHelper{
 
   static final String serverUrl = "http://192.168.1.102:8000/api";
   static bool status=false ;
-  static var token ;
+  static var token =null ;
   static var name;
   static var email;
   static var password;

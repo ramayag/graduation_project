@@ -5,6 +5,7 @@ import 'package:gui/core/utils/enums.dart';
 import 'package:gui/core/utils/responsive.dart';
 import 'package:gui/data/datasource/databasehelper.dart';
 import 'package:gui/presentation/dashboard/MenuAppController.dart';
+import 'package:gui/presentation/dashboard/dashboard_screen.dart';
 import 'package:gui/presentation/login_singup/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -49,7 +50,9 @@ class WelcomeForm extends StatelessWidget {
           ),
           onPressed: ()
           => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => LoginScreen(loginType: LoginType.signIn))),
+              builder: (context) =>
+                  LoginScreen(loginType: LoginType.signIn)
+          )),
 
 
         ),
@@ -71,7 +74,8 @@ class WelcomeForm extends StatelessWidget {
           ),
           onPressed: ()
           => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => LoginScreen(loginType: LoginType.signUp))),
+              builder: (context) => DatabaseHelper.token==null ?LoginScreen(loginType: LoginType.signUp) : DashboardScreen(),
+          )),
         ),
       ],
     );

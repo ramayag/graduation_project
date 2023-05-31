@@ -2,6 +2,7 @@ import 'package:gui/core/utils/app_assets.dart';
 import 'package:gui/core/utils/color_manager.dart';
 import 'package:gui/core/utils/constants.dart';
 import 'package:gui/core/utils/responsive.dart';
+import 'package:gui/data/models/modelhelper.dart';
 import 'package:gui/presentation/dashboard/MenuAppController.dart';
 import 'package:gui/presentation/dashboard/components/header.dart';
 import 'package:gui/presentation/dashboard/components/side_menu.dart';
@@ -74,8 +75,9 @@ class DashboardScreen extends StatelessWidget {
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600,
                               )),
-                      onPressed: () => Navigator.of(context).push(
-                        MaterialPageRoute(
+                      onPressed: () {
+                         // Model.start();
+                        Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => MultiProvider(
                             providers: [
                               ChangeNotifierProvider(
@@ -85,7 +87,7 @@ class DashboardScreen extends StatelessWidget {
                             child: DashboardDetailsScreen(),
                           ),
                         ),
-                      ),
+                      );}
                     ),
                   ),
                 ],

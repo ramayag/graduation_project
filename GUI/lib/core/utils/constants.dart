@@ -9,6 +9,10 @@ class Constants {
   static const double _spaceMedium = 20.0;
   static const double _spaceLarge = 60.0;
 
+  static RoundedRectangleBorder kRoundedRectangle =
+      const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15)));
+
+
   static RoundedRectangleBorder kFilledButton =
       const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15)));
 

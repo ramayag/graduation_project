@@ -108,6 +108,7 @@ class SingupForm extends StatelessWidget {
                           )),
                   onPressed: () async {
                     await DatabaseHelper.registerData();
+                    await DatabaseHelper.loginData();
                     if (DatabaseHelper.status) {
                       Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => MultiProvider(
@@ -116,7 +117,7 @@ class SingupForm extends StatelessWidget {
                               create: (context) => MenuAppController(),
                             ),
                           ],
-                          child: LoginScreen(loginType: LoginType.signIn),
+                          child: DashboardScreen(),
                         ),
                       ));
                     }

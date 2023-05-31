@@ -53,15 +53,15 @@ class LoginForm extends StatelessWidget {
                   Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 32)),
               Constants.verticalSpaceMedium(),
               EditTextField(
-                label: 'Email',
-                hint: 'Enter your email',
+                label: 'Name',
+                hint: 'Enter your name',
                 width: Responsive.isMobile(context)
                     ? MediaQuery.of(context).size.width
                     : MediaQuery.of(context).size.width / 4,
                 controller: TextEditingController(),
                 type: TextInputType.name,
                 onChanged: (value) {
-                  DatabaseHelper.email=value;
+                  DatabaseHelper.name=value;
                 },
               ),
               Constants.verticalSpaceMedium(),

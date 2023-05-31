@@ -1,10 +1,14 @@
 import 'package:gui/core/utils/app_assets.dart';
+import 'package:gui/core/utils/app_strings.dart';
 import 'package:gui/core/utils/color_manager.dart';
 import 'package:gui/core/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gui/presentation/dashboard/MenuAppController.dart';
+import 'package:gui/presentation/dashboard/dashboard_screen.dart';
+import 'package:gui/presentation/profile/profile_screen.dart';
+import 'package:gui/presentation/rating/rating_screen.dart';
 import 'package:gui/presentation/welcom/welcome_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -26,63 +30,7 @@ class SideMenu extends StatelessWidget {
           DrawerListTile(
             title: "Dashboard",
             svgSrc: AppAssets.dashboardIcon,
-            press: () {},
-          ),
-          DrawerListTile(
-            title: "Profile",
-            svgSrc: AppAssets.profileIcon,
-            press: () {},
-          ),
-          DrawerListTile(
-            title: "Rating",
-            svgSrc: AppAssets.rateIcon,
             press: () {
-              Alert(
-                  context: context,
-                  title: "Rating",
-                  style: AlertStyle(overlayColor: Colors.black38),
-                  content: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      RatingBar(
-                        initialRating: 0,
-                        direction: Axis.horizontal,
-                        allowHalfRating: true,
-                        itemCount: 5,
-                        glowRadius: 1,
-                        ratingWidget: RatingWidget(
-                          full: const Icon(Icons.star_rate_rounded, color: Colors.amber),
-                          half: const Icon(Icons.star_half_rounded,
-                              color: Colors.amber, textDirection: TextDirection.ltr),
-                          empty:
-                              const Icon(Icons.star_border_rounded, color: Colors.amber),
-                        ),
-                        itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                        onRatingUpdate: (rating) {},
-                      ),
-                    ],
-                  ),
-                  buttons: [
-                    DialogButton(
-                      onPressed: () => Navigator.pop(context),
-                      child: Text(
-                        "Confirm",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                    )
-                  ]).show();
-            },
-          ),
-          DrawerListTile(
-            title: "Logout",
-            svgSrc: AppAssets.logoutIcon,
-            press: () async {
-              print(DatabaseHelper.token);
-              // DatabaseHelper databaseHelper = new DatabaseHelper();
-              await DatabaseHelper.logout(DatabaseHelper.token);
-              print('asssssss');
-              if (DatabaseHelper.status) {
-                print('tasssssss');
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => MultiProvider(
                     providers: [
@@ -90,15 +38,71 @@ class SideMenu extends StatelessWidget {
                         create: (context) => MenuAppController(),
                       ),
                     ],
-                    child:  WelcomeScreen(),
-                    // DashboardScreen(),
+                    child: // LoginScreen(loginType: LoginType.signIn),
+                    DashboardScreen(),
                   ),
                 )
                 );
-              }
-            }
-
+            },
           ),
+          DrawerListTile(
+            title: "Profile",
+            svgSrc: AppAssets.profileIcon,
+            press: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const ProfileScreen())),
+          ),
+          DrawerListTile(
+            title: AppStrings.rating,
+            svgSrc: AppAssets.rateIcon,
+            press: () {
+              Alert(
+                  context: context,
+                  title: AppStrings.rating,
+                  style: const AlertStyle(overlayColor: Colors.black38),
+                  content: const Text(AppStrings.ratingQuestion),
+                  buttons: [
+                    DialogButton(
+                      onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const RatingScreen())),
+                      child: const Text(
+                        AppStrings.confirm,
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                    ),
+                    DialogButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text(
+                        AppStrings.cancel,
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                    )
+                  ]).show();
+            },
+          ),
+          DrawerListTile(
+              title: "Logout",
+              svgSrc: AppAssets.logoutIcon,
+              press: () async {
+                print(DatabaseHelper.token);
+                // DatabaseHelper databaseHelper = new DatabaseHelper();
+                await DatabaseHelper.logout(DatabaseHelper.token);
+                print('asssssss');
+                if (DatabaseHelper.status) {
+                  print('tasssssss');
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => MultiProvider(
+                      providers: [
+                        ChangeNotifierProvider(
+                          create: (context) => MenuAppController(),
+                        ),
+                      ],
+                      child: WelcomeScreen(),
+                    ),
+                  ));
+                }
+              }),
         ],
       ),
     );
@@ -129,7 +133,8 @@ class DrawerListTile extends StatelessWidget {
       ),
       title: Text(
         title,
-        style: const TextStyle(color: Colors.white70, fontWeight: FontWeight.w700),
+        style:
+            const TextStyle(color: Colors.white70, fontWeight: FontWeight.w700),
       ),
     );
   }

@@ -12,4 +12,8 @@ class AppAssets {
   static const String rateIcon = "assets/icons/menu_rate.svg";
   static const String tipIcon = "assets/icons/tip_spot.svg";
   static const String noteIcon = "assets/icons/note_spot.svg";
+
+
+  static const String profileImage = "assets/images/profile_picture.png";
+
 }

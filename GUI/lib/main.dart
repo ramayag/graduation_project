@@ -1,5 +1,6 @@
 import 'package:gui/core/utils/enums.dart';
 import 'package:gui/core/utils/styles.dart';
+import 'package:gui/presentation/dashboard/dashboard_screen.dart';
 import 'package:gui/presentation/login_singup/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:gui/presentation/welcom/welcome_screen.dart';
