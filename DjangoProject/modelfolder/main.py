@@ -7,14 +7,14 @@ import mediapipe as mp
 import numpy as np
 from experta import *
 from enum import Enum
-import mysql.connector
-import pymssql
+# import mysql.connector
+# import pymssql
 from sqlalchemy import create_engine
 import connection_database 
 import time
 
 user_id = 5
-path = r'D:\Newfolder\Desktop\DjangoProject\db.sqlite3'
+path = r'C:\Users\USER\Desktop\DjangoProject\db.sqlite3'
 
 # def set_user_id(value):      
 #     global user_id  # Declare global_var as global inside the function

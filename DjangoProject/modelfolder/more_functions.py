@@ -6,8 +6,8 @@ import mediapipe as mp
 import numpy as np
 from experta import *
 from enum import Enum
-import mysql.connector
-import pymssql
+# import mysql.connector
+# import pymssql
 from sqlalchemy import create_engine
 
 class more_functions : 

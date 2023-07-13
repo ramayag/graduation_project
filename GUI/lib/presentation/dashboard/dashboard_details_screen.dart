@@ -10,7 +10,7 @@ import 'package:gui/presentation/dashboard/components/tip_row.dart';
 import 'package:flutter/material.dart';
 import 'package:gui/presentation/dashboard/dashboard_screen.dart';
 import 'package:provider/provider.dart';
-import 'package:text_to_speech/text_to_speech.dart';
+// import 'package:text_to_speech/text_to_speech.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:gui/data/models/modelhelper.dart';
 
@@ -67,7 +67,7 @@ class DashboardDetailsScreen extends StatelessWidget {
                         // when i use consumer when notifyListeners(); run then all consumer rebuild
                         selector: (context, sele1) => sele1.getcommint,
                         builder: (context, pro, child) {
-                          TextToSpeech().speak("${pro}");
+                          // TextToSpeech().speak("${pro}");
                           // print("helllo");
                           // print("${pro}");
                           return TipRow(
@@ -135,7 +135,7 @@ class DashboardDetailsScreen extends StatelessWidget {
                                 onPressed: () {
                                   // pro.change_name("ramaq");
                                   IO.Socket socket = IO.io(
-                                      'http://192.168.1.102:8080/',
+                                      'http://192.168.1.103:8080/',
                                       <String, dynamic>{
                                         'transports': ['websocket'],
                                         'autoConnect': false,

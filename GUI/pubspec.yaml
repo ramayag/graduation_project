@@ -44,9 +44,6 @@ dependencies:
   flutter_svg: ^2.0.0+1
   rflutter_alert: ^2.0.4
   flutter_rating_bar: ^4.0.0
-  text_to_speech: ^0.2.0
-  shared_preferences: ^2.0.17
-
 
 dev_dependencies:
   flutter_test:

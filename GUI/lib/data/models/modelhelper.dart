@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
-import 'package:text_to_speech/text_to_speech.dart';
+// import 'package:text_to_speech/text_to_speech.dart';
 
 
 
@@ -30,7 +30,7 @@ class Model {
       //pro().change_name(data);
     });
     socket.onDisconnect((_) => print('disconnect'));
-    TextToSpeech().speak("${pro}");
+    // TextToSpeech().speak("${pro}");
     socket.connect();
   }
 }
