@@ -4,7 +4,7 @@ import 'dart:convert';
 
 class DatabaseHelper{
 
-  static final String serverUrl = "http://192.168.1.103:8000/api";
+  static final String serverUrl = "http://192.168.43.113:8000/api";
   static bool status=false ;
   static var token =null ;
   static var name;
@@ -30,15 +30,15 @@ class DatabaseHelper{
 
     if (response.statusCode == 200) {
       // تمت عملية تسجيل الدخول بنجاح
-      print('iiiiiiiiiiتم تسجيل الدخول بنجاح');
+      print('تم تسجيل الدخول بنجاح');
       status =true;
     }else if(response.statusCode == 400){
-      print('iiiiiiiiiiiiحدث خطأ في تسجيل الدخول');
+      print('حدث خطأ في تسجيل الدخول');
       status=false;
     }
     else {
       // حدث خطأ في تسجيل الدخول
-      print('iiiiiiiiiiحدث خطأ ');
+      print('حدث خطأ ');
       status =false;
     }
     print(status);
@@ -78,18 +78,10 @@ class DatabaseHelper{
     }
     else {
       // حدث خطأ في تسجيل الدخول
-      print('حدث خطأ ');
+      print('حدث خطأ');
       status =false;
     }
     print(status);
-    // var data = json.decode(response.body);
-
-    // if(status){
-    //   print('data : ${data["error"]}');
-    // }else{
-    //   print('data : ${data["token"]}');
-    //   _save(data["token"]);
-    // }
 
   }
 
@@ -111,15 +103,15 @@ class DatabaseHelper{
 
     if (response.statusCode == 200) {
       // تمت عملية تسجيل الدخول بنجاح
-      print('uuuuuuuuu تسجيل الدخول بنجاح');
+      print('تسجيل الخروج بنجاح');
       status =true;
     }else if(response.statusCode == 400){
-      print('uuuuuuuuuuuuuuu خطأ في تسجيل الدخول');
+      print('خطأ في تسجيل الخروج');
       status=false;
     }
     else {
       // حدث خطأ في تسجيل الدخول
-      print('uuuuuuuuuuuu خطأ ');
+      print('خطأ');
       status =false;
     }
     print(status);

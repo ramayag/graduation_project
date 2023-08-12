@@ -5,35 +5,35 @@ import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 
 
-class Model {
-
-  static start() {
-    pro().change_name("ramaq");
-    IO.Socket socket = IO.io('http://192.168.1.102:8080/', <String, dynamic>{
-      'transports': ['websocket'],
-      'autoConnect': false,});
-
-    socket.onConnect((_) {
-      print('connected');
-      socket.emit('test', 'connect from flutter');
-    });
-    // Timer.periodic(Duration(seconds: 1), (timer) {
-    //   socket.emit('test', 'Hello from Dart');
-    // });
-    socket.on('test', (data) {
-      // AsyncSnapshot.waiting();
-      // sleep(1 as Duration);
-      // socket.emit('test', 'hello');
-      print(data);
-      pro().change_name(data);
-
-      //pro().change_name(data);
-    });
-    socket.onDisconnect((_) => print('disconnect'));
-    // TextToSpeech().speak("${pro}");
-    socket.connect();
-  }
-}
+// class Model {
+//
+//   static start() {
+//     pro().change_name("ramaq");
+//     IO.Socket socket = IO.io('http://192.168.1.102:8080/', <String, dynamic>{
+//       'transports': ['websocket'],
+//       'autoConnect': false,});
+//
+//     socket.onConnect((_) {
+//       print('connected');
+//       socket.emit('test', 'connect from flutter');
+//     });
+//     // Timer.periodic(Duration(seconds: 1), (timer) {
+//     //   socket.emit('test', 'Hello from Dart');
+//     // });
+//     socket.on('test', (data) {
+//       // AsyncSnapshot.waiting();
+//       // sleep(1 as Duration);
+//       // socket.emit('test', 'hello');
+//       print(data);
+//       pro().change_name(data);
+//
+//       //pro().change_name(data);
+//     });
+//     socket.onDisconnect((_) => print('disconnect'));
+//     // TextToSpeech().speak("${pro}");
+//     socket.connect();
+//   }
+// }
 
 
 class pro extends ChangeNotifier {
@@ -43,11 +43,25 @@ class pro extends ChangeNotifier {
 
   get getname => name_b;
   get getcommint => commint;
-  get reco => co;
-  change_name(data) {
-    commint = data;
-    // name_b= "End";
-    // print(co);
+  get getco => co;
+  change_name() {
+    print("change_name");
+    if(co==0){
+      name_b = "Stop";
+      co=1;
+    }
+    else{
+      name_b = "Let's Go";
+      co=0;
+    }
+
     notifyListeners(); // this function that can rebuild Consumer that lisean to this class
+  }
+  change_comment(data){
+
+    commint=data;
+
+    notifyListeners();
+
   }
 }
